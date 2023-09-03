@@ -1,0 +1,56 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox
+from PyQt5.uic import loadUi
+import sqlite3
+
+# Establish a connection to the SQLite database
+conn = sqlite3.connect("courier_management.db")
+cursor = conn.cursor()
+
+class CourierManagementApp(QMainWindow):
+    def __init__(self):
+        super(CourierManagementApp, self).__init__()
+        loadUi("main_window.ui", self)  # Load the main window UI from the .ui file
+
+        # Connect UI buttons and actions
+        self.view_couriers_button.clicked.connect(self.view_couriers)
+        self.add_courier_button.clicked.connect(self.add_courier)
+
+    def view_couriers(self):
+        # Implement logic to display the list of couriers in a table widget
+        pass
+
+    def add_courier(self):
+        # Implement logic to add a new courier to the database
+        pass
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    main_window = CourierManagementApp()
+    main_window.show()
+    sys.exit(app.exec_())CREATE TABLE couriers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    phone TEXT,
+    address TEXT
+);from PyQt5.QtWidgets import QDialog
+from PyQt5.uic import loadUi
+
+class AddCourierDialog(QDialog):
+    def __init__(self):
+        super(AddCourierDialog, self).__init__()
+        loadUi("add_courier_dialog.ui", self)  # Load the dialog UI from the .ui file
+
+
+import sqlite3
+
+conn = sqlite3.connect("courier_management.db")
+cursor = conn.cursor()
+
+def add_courier(name, phone, address):
+    # Implement code to insert a new courier into the database
+    pass
+
+def get_couriers():
+    # Implement code to retrieve couriers from the database
+    pass
